@@ -8,13 +8,19 @@ services:
       - ES_PORT=9200
     ports:
       - "24224:24224"
+    depends_on:
+      - elasticsearch
 
   flask:
     build:
       context: ./container
     ports:
       - "8090:80"
-    links:
+    # container_name: myflask
+    # image: myflask:latest
+    # links:
+    #   - fluentd:fluentd
+    depends_on:
       - fluentd
     logging:
       driver: fluentd
@@ -51,3 +57,5 @@ services:
     image: docker.elastic.co/kibana/kibana:6.3.2
     ports:
       - "5601:5601"
+    depends_on:
+      - elasticsearch
