@@ -5,7 +5,7 @@ USER root
 RUN buildDeps="sudo make gcc g++ libc-dev" \
  && apt-get update \
  && apt-get install -y --no-install-recommends $buildDeps \
- && sudo gem install elasticsearch -v 7.6 \
+ && sudo gem install elasticsearch -v 6.3 \
  && sudo gem install fluent-plugin-elasticsearch \
  && sudo gem install fluent-plugin-rewrite-tag-filter \
  && sudo gem install fluent-plugin-concat \
